@@ -1,0 +1,13 @@
+# Ignore PyInstaller packages
+BookCradle_AutoCrop.lrplugin/bin/_internal/
+BookCradle_AutoCrop.lrplugin/bin/*.exe
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Windows generated files
+ehthumbs.db
+Thumbs.db
+Desktop.ini
