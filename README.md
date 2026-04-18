@@ -57,7 +57,7 @@ Find these lines:
       local cmd
       local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
-      if WIN32 then
+      if WIN_ENV then
          detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
          cmd = string.format('""%s" --dng-list "%s" --margin %s --out "%s""',
                              detectExe, listPath, tostring(margin), resultsPath)
@@ -75,7 +75,7 @@ Change references to the executable to reference the script itself. Add OS depen
       local cmd
       local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
-      if WIN32 then
+      if WIN_ENV then
          -- Windows developers may need to change this to "py" or a full path if python is not in their environment variables.
          pythonInterpreter = "python" 
          cmd = string.format('""%s" "%s" --dng-list "%s" --margin %s --out "%s""',
