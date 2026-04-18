@@ -5,8 +5,8 @@ local LrHttp = import 'LrHttp'
 return {
     sectionsForTopOfDialog = function(f, propertyTable)
         local logoPath = LrPathUtils.child(_PLUGIN.path, "Library-stacked_blue.png")
-        local repoUrl = "https://github.com/UConn-Library-Digital-Imaging-Lab/Digitization_AutoCrop_LrC"
-	local rdmeUrl = "https://github.com/UConn-Library-Digital-Imaging-Lab/Digitization_AutoCrop_LrC?tab=readme-ov-file"
+        local repoUrl = "https://github.com/UConn-Library-Digital-Imaging-Lab/BookCradle_AutoCrop_LrC/tree/main"
+	    local rdmeUrl = "https://github.com/UConn-Library-Digital-Imaging-Lab/BookCradle_AutoCrop_LrC/blob/main/README.md"
         
         return {
             {
