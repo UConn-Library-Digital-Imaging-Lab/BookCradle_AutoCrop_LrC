@@ -37,7 +37,7 @@ The computer vision backend (`bookcradle_detect.py`) is written in Python using 
 
 ### Running Natively (Without the Executable)
 
-If you wish to bypass the compiled Windows executable and run the Python script directly, you will need to modify the Lua execution command and ensure all dependencies are installed on your machine.
+If you wish to bypass the compiled executable and run the Python script directly, you will need to modify `BookCradle.lua` and ensure all dependencies are installed on your machine.
 
 **1. Set Up the Python Environment**
 
@@ -52,24 +52,40 @@ Open `BookCradle_Autocrop.lua` and locate the **"Path to the bundled python exec
 
 Find these lines:
 ```bash
--- Path to the bundled python executable and results.
-local detectExe    = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
-local resultsPath  = LrPathUtils.child(tempFolder, "results.ndjson")
+   	-- Paths to bundled python executables, if/then for OS, and results.
+      local detectExe
+      local cmd
+      local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
--- Order the command prompt instructions: Run the bundled python executable, pass the dng list, and save results to json.
-local cmd = string.format('""%s" --dng-list "%s" --out "%s""',
-                          detectExe, listPath, resultsPath)
+      if WIN32 then
+         detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
+         cmd = string.format('""%s" --dng-list "%s" --margin %s --out "%s""',
+                             detectExe, listPath, tostring(margin), resultsPath)
+      else
+         detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect")
+         cmd = string.format('"%s" --dng-list "%s" --margin %s --out "%s"',
+                             detectExe, listPath, tostring(margin), resultsPath)
 ```
-Change references to the executable to reference the script itself. It should look like:
+Change references to the executable to reference the script itself. Add OS dependent python interpreter. It should look like:
 
 ```bash
--- Path to the python SCRIPT and results.
-local detectScript = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.py")
-local resultsPath  = LrPathUtils.child(tempFolder, "results.ndjson")
+      -- Paths to python interpreter, python script, and results.
+      local pythonInterpreter
+      local scriptPath = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.py")
+      local cmd
+      local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
--- Order the command prompt instructions: Run the python SCRIPT, pass the dng list, and save results to json.
-local cmd = string.format('python "%s" --dng-list "%s" --out "%s"',
-                          detectScript, listPath, resultsPath)
+      if WIN32 then
+         -- Windows developers may need to change this to "py" or a full path if python is not in their environment variables.
+         pythonInterpreter = "python" 
+         cmd = string.format('""%s" "%s" --dng-list "%s" --margin %s --out "%s""',
+                             pythonInterpreter, scriptPath, listPath, tostring(margin), resultsPath)
+
+      else
+         pythonInterpreter = "python3"
+         cmd = string.format('"%s" "%s" --dng-list "%s" --margin %s --out "%s"',
+                             pythonInterpreter, scriptPath, listPath, tostring(margin), resultsPath)
+      end
 ```
 
 ## Credits
