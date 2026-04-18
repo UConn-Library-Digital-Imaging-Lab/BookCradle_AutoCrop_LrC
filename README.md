@@ -4,11 +4,9 @@ A Lightroom Classic plugin that automates the cropping of bound cultural heritag
 
 ## Installation Instructions
 
-This plugin currently only works on Windows. A mac version is planned for future releases.
-
 To install the plugin:
 1. Navigate to the **[Releases](https://github.com/UConn-Library-Digital-Imaging-Lab/BookCradle_AutoCrop_LrC/releases)** section of the repository.
-2. Download the latest `BookCradle_Autocrop_vX.X.zip` file.
+2. Download the latest `BookCradle_Autocrop_vX.X_OS.zip` file for your operating system.
 3. Extract the ZIP file.
 4. Move the extracted `BookCradle_Autocrop.lrplugin` folder to a permanent, safe location on your computer.
 5. Open Lightroom Classic, go to **File > Plug-in Manager**, click **Add**, and select the folder.
@@ -35,7 +33,7 @@ This is a custom tool that can apply simple, uniform crop resizes across a batch
 
 ## Developer Notes
 
-The computer vision backend (`bookcradle_detect.py`) is written in Python using `rawpy`, `numpy`, and `opencv-python`. The current version of `BookCradle_AutoCrop.lua` is written to work with a compiled Windows executable of `bookcradle_detect.py`. It is included in the release, but can also be created locally using `Pyinstaller`.
+The computer vision backend (`bookcradle_detect.py`) is written in Python using `rawpy`, `numpy`, and `opencv-python`. The current version of `BookCradle_AutoCrop.lua` is written to work with a compiled executable of `bookcradle_detect.py`. It is included in the release, but can also be created locally using `Pyinstaller`.
 
 ### Running Natively (Without the Executable)
 
