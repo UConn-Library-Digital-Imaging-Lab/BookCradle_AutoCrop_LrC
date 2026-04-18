@@ -121,13 +121,20 @@ LrTasks.startAsyncTask(function()
     lf:close()
     
     if #items > 0 then
-        -- Path to the bundled python executable and results.
-        local detectExe   = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
+	-- Paths to bundled python executables, if/then for OS, and results.
+	      local detectExe
+        local cmd
         local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
-        -- Order the command prompt instructions: Run the bundled python executable, pass the dng list, mode, margin, and save results to json.
-        local cmd = string.format('""%s" --dng-list "%s" --mode "%s" --margin %s --out "%s""',
-                                  detectExe, listPath, mode, tostring(margin), resultsPath)
+        if WIN_ENV then
+            detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
+            cmd = string.format('""%s" --dng-list "%s" --margin %s --out "%s""',
+                                detectExe, listPath, tostring(margin), resultsPath)
+        else
+            detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect")
+            cmd = string.format('"%s" --dng-list "%s" --margin %s --out "%s"',
+                                detectExe, listPath, tostring(margin), resultsPath)
+        end
 
         -- Execute the command and wait for it to finish.
         local pythonExitCode = LrTasks.execute(cmd)
