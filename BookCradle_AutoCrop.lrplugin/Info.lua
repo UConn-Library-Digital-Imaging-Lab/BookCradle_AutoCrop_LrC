@@ -1,5 +1,5 @@
 return {
-  LrSdkVersion = 10.0,
+  LrSdkVersion = 6.0,
   LrToolkitIdentifier = 'edu.uconn.lib.dil.autocrop_bookcradle',
   LrPluginName = 'Book Cradle AutoCrop',
 
