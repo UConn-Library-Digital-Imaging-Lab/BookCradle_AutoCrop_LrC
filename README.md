@@ -4,17 +4,7 @@ A Lightroom Classic plugin that automates the cropping of bound cultural heritag
 
 ## Lightroom Version Info
 
-This plugin was tested on Lightroom Classic versions 13 and 15. During the development of this plugin, the earliest SDK version documentation found that supports all the API modules used in this plugin was version 10.0. Due to the lack of documentation prior to Lightroom 10.0 (Released October 2020), and the developer's lack of an earlier Lightroom version to test with, the plugin is currently coded to work with SDK versions 10.0 and later. 
-
-However, it is highly likely that this plugin will work as far back as version 6.0. If you are using a version of Lightroom older than 10.0, you can change the SDK version written in `info.lua` and try it. Just open up `info.lua` in a text editor, find:
-```bash
-LrSdkVersion = 10.0
-```
-and change it to:
-```
-LrSdkVersion = 6.0
-```
-save it, add the plugin or reload it if it was already added, and try it out.
+This plugin is compatible with Lightroom SDK version 6.0 and later, however it has only been tested on Lightroom Classic versions 13 and 15.
 
 ## Installation Instructions
 
