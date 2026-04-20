@@ -62,13 +62,14 @@ Find these lines:
       local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
       if WIN_ENV then
-         detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
-         cmd = string.format('""%s" --dng-list "%s" --margin %s --out "%s""',
-                             detectExe, listPath, tostring(margin), resultsPath)
+          detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
+          cmd = string.format('""%s" --dng-list "%s" --mode "%s" --strategy "%s" --margin %s --out "%s""',
+                              detectExe, listPath, mode, strategy, tostring(margin), resultsPath)
       else
-         detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect")
-         cmd = string.format('"%s" --dng-list "%s" --margin %s --out "%s"',
-                             detectExe, listPath, tostring(margin), resultsPath)
+          detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect")
+          cmd = string.format('"%s" --dng-list "%s" --mode "%s" --strategy "%s" --margin %s --out "%s"',
+                              detectExe, listPath, mode, strategy, tostring(margin), resultsPath)
+      end
 ```
 Change references to the executable to reference the script itself. Add OS dependent python interpreter. It should look like:
 
@@ -82,13 +83,13 @@ Change references to the executable to reference the script itself. Add OS depen
       if WIN_ENV then
          -- Windows developers may need to change this to "py" or a full path if python is not in their environment variables.
          pythonInterpreter = "python" 
-         cmd = string.format('""%s" "%s" --dng-list "%s" --margin %s --out "%s""',
-                             pythonInterpreter, scriptPath, listPath, tostring(margin), resultsPath)
+         cmd = string.format('""%s" "%s" --dng-list "%s" --mode "%s" --strategy "%s" --margin %s --out "%s""',
+                             pythonInterpreter, scriptPath, listPath, mode, strategy, tostring(margin), resultsPath)
 
       else
          pythonInterpreter = "python3"
-         cmd = string.format('"%s" "%s" --dng-list "%s" --margin %s --out "%s"',
-                             pythonInterpreter, scriptPath, listPath, tostring(margin), resultsPath)
+         cmd = string.format('"%s" "%s" --dng-list "%s" --mode "%s" --strategy "%s" --margin %s --out "%s"',
+                             pythonInterpreter, scriptPath, listPath, mode, strategy, tostring(margin), resultsPath)
       end
 ```
 
