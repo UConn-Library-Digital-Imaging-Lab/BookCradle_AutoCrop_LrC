@@ -122,18 +122,18 @@ LrTasks.startAsyncTask(function()
     
     if #items > 0 then
 	-- Paths to bundled python executables, if/then for OS, and results.
-	      local detectExe
+	    local detectExe
         local cmd
         local resultsPath = LrPathUtils.child(tempFolder, "results.ndjson")
 
         if WIN_ENV then
             detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect.exe")
-            cmd = string.format('""%s" --dng-list "%s" --margin %s --out "%s""',
-                                detectExe, listPath, tostring(margin), resultsPath)
+            cmd = string.format('""%s" --dng-list "%s" --mode "%s" --strategy "%s" --margin %s --out "%s""',
+                                detectExe, listPath, mode, strategy, tostring(margin), resultsPath)
         else
             detectExe = LrPathUtils.child(_PLUGIN.path, "bin/bookcradle_detect")
-            cmd = string.format('"%s" --dng-list "%s" --margin %s --out "%s"',
-                                detectExe, listPath, tostring(margin), resultsPath)
+            cmd = string.format('"%s" --dng-list "%s" --mode "%s" --strategy "%s" --margin %s --out "%s"',
+                                detectExe, listPath, mode, strategy, tostring(margin), resultsPath)
         end
 
         -- Execute the command and wait for it to finish.
