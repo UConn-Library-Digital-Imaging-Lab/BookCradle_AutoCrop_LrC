@@ -35,9 +35,33 @@ This is a custom tool that can apply simple, uniform crop resizes across a batch
     * This tool reads the rotation applied to an image in Lightroom, so it "knows" which edge of the image is the foredge, spine, top and bottom.
 4. Click **OK**. The batch crop can be reversed with **Undo** if needed.
 
+## Possible Security Exceptions Needed
+
+Because this plugin utilizes compiled Python executables to run, Windows Defender and Mac's Gatekeeper may attempt to scan these files every time they run, causing the batch processing to take several minutes to complete, or may prevent the executable from running at all. 
+
+To avoid this, you may need to add the plugin folder to your system's security exclusion list.
+
+### Windows
+
+1. Open **Windows Security**.
+2. Click on **Virus & threat protection**.
+3. Under the "Virus & threat protection settings" heading, click **Manage settings**.
+4. Scroll down to the "Exclusions" section and click **Add or remove exclusions**. *(You may be prompted for Administrator privileges).*
+5. Click the **+ Add an exclusion** button and select **Folder**.
+6. Select the .lrplugin folder and click **Select Folder**.
+
+### macOS
+
+1. Attempt to run the plugin in Lightroom Classic once (it may fail or do nothing).
+2. Open your Mac's **System Settings** and navigate to **Privacy & Security**.
+3. Scroll down to the **Security** section. 
+4. You should see a message stating that the executable was blocked from use. Click **Allow Anyway**.
+5. Run the plugin in Lightroom again. You may receive one final pop-up asking if you are sure you want to open it; click **Open**.
+
+
 ## Developer Notes
 
-The computer vision backend (`bookcradle_detect.py`) is written in Python using `rawpy`, `numpy`, and `opencv-python`. The current version of `BookCradle_AutoCrop.lua` is written to work with a compiled executable of `bookcradle_detect.py`. It is included in the release, but can also be created locally using `Pyinstaller`.
+The computer vision backend `bookcradle_detect.py` is written in Python using `rawpy`, `numpy`, and `opencv-python`. The current version of `BookCradle_AutoCrop.lua` is written to work with a compiled executable of `bookcradle_detect.py`. It is included in the release, but can also be created locally using `Pyinstaller`.
 
 ### Running Natively (Without the Executable)
 
