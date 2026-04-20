@@ -4,7 +4,7 @@ A Lightroom Classic plugin that automates the cropping of bound cultural heritag
 
 ## Lightroom Version Info
 
-This plugin is compatible with Lightroom SDK version 6.0 and later, however it has only been tested on Lightroom Classic versions 13 and 15.
+This plugin is compatible with Lightroom SDK version 6.0 and later, however it has only been used in production at the UConn Library Digital Imaging lab on Lightroom Classic versions 13 and 15.
 
 ## Installation Instructions
 
