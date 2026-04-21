@@ -120,7 +120,7 @@ Change references to the executable to reference the script itself. Add OS depen
 ## Credits
 * Developed by Ian Paul for the Digital Imaging Lab at the Homer Babbidge Library, University of Connecticut.
 
-* A special thanks to [Michael J. Bennett](https://tundragraphics.com/) for his support and insight throughout the development of this plugin. His wealth of knowledge, experience, and enthusiasm for advancing the field of cultural heritage imaging helped make this project possible.
+* A special thanks to [Michael J. Bennett](https://library.uconn.edu/about/directory/michael-j-bennett/) for his support and insight throughout the development of this plugin. His wealth of knowledge, experience, and enthusiasm for advancing the field of cultural heritage imaging helped make this project possible.
 
 * [David Heiko Kolf](https://dkolf.de/) for [dkjson.lua](https://dkolf.de/dkjson-lua/)
 
